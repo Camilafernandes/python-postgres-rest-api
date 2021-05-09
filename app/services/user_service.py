@@ -4,15 +4,15 @@ from config import db
 from werkzeug.exceptions import NotFound
 import json
 
-def get(filter = None):
+def get(paginate = 1, limit = 20, filter = None):
     '''
     Get all entities
     :returns: all entity
     '''
     if filter is None:
-        data = User.query.all()
+        data = User.query.offset(paginate).limit(limit).all()
     if filter is not None:
-        data = User.query.filter(User.name.like('%' + filter["name"] + '%'))
+        data = User.query.filter(User.name.like('%' + filter + '%')).offset(paginate).limit(limit)
 
     return data
 
