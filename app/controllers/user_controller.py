@@ -10,8 +10,14 @@ api = Blueprint('users', 'users')
 
 @api.route('/users', methods=['GET'])
 def api_get():
-    ''' Get all entities'''
-    users = user_service.get()
+    ''' Get entities with filter or not'''
+    
+    if 'name' in request.args:
+        args = request.args
+        users = user_service.get(args)
+    else: 
+        users = user_service.get()  
+
     return jsonify([user.as_dict() for user in users])
 
 @api.route('/users', methods=['POST'])

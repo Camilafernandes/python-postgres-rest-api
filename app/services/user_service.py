@@ -2,13 +2,19 @@
 from models.user import User
 from config import db
 from werkzeug.exceptions import NotFound
+import json
 
-def get():
+def get(filter = None):
     '''
     Get all entities
     :returns: all entity
     '''
-    return User.query.all()
+    if filter is None:
+        data = User.query.all()
+    if filter is not None:
+        data = User.query.filter(User.name.like('%' + filter["name"] + '%'))
+
+    return data
 
 def post(body):
     '''
