@@ -1,0 +1,22 @@
+version: '2'
+services:
+  database:
+    build: db
+    image: postgres:10
+    environment: 
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=testdb
+    expose:
+      - 5432
+  app:
+    build: app
+    depends_on: [database]
+    links:
+      - database
+    ports:
+      - "5000:5000"
+    environment:
+      SQLALCHEMY_DATABASE_URI: 'postgresql://root:password@database:5432/testdb'
+  redis:
+    image: "redis:alpine"

@@ -1,0 +1,1 @@
+SQLALCHEMY_DATABASE_URI: 'postgresql://root:password@database:5432/testdb'
