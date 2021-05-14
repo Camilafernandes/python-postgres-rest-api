@@ -1,8 +1,0 @@
-PyYAML==5.1.2
-Flask==1.1.1
-Flask-SQLAlchemy==2.5.0
-Flask-Migrate==2.5.2
-Flask-swagger-ui==3.36.0
-Flask-Caching==1.10.1
-redis==3.4.1
-Flask-Psycopg2==1.3
