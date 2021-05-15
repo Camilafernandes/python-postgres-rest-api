@@ -1,1 +1,1 @@
-SQLALCHEMY_DATABASE_URI: 'postgresql://root:password@database:5432/testdb'
+SQLALCHEMY_DATABASE_URI: 'postgresql+psycopg2://root:password@db:5432/testdb'
